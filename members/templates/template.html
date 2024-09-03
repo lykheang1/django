@@ -3,15 +3,20 @@
 {% include "mymenu.html" with me="TOBIAS" sponsor="W3SCHOOLS"  %}
 <body>
   
-  <ul>
-    {% for x in mymembers reversed %}
-      <h1>{{ x.id }}</h1>
-      <p>
-        {{ x.firstname }}
-        {{ x.lastname }}
-      </p>
+  <table border='1'>
+    <tr>
+      <th>ID</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+    </tr>
+    {% for x in mymembers %}
+      <tr>
+        <td>{{ x.id }}</td>
+          <td>{{ x.firstname }}</td>
+        <td>{{ x.lastname }}</td>
+      </tr>
     {% endfor %}
-  </ul> 
+  </table>
 
 
 

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from django.db.models import Q
 from .models import Member
 
 def members(request):
@@ -26,10 +27,10 @@ def main(request):
     return HttpResponse(template.render())
 
 def testing(request): 
-    mymembers = Member.objects.all().values()
+    mydata = Member.objects.filter(Q(firstname='Meng') | Q(firstname='Lykheang')).values()
     template = loader.get_template('template.html')
     context = {
-        "mymembers" : mymembers
+        "mymembers" : mydata
     }
-    
+
     return HttpResponse(template.render(context, request))
